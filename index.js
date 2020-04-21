@@ -57,6 +57,23 @@ app.post('/api/persons', (req, res) => {
 		id: Math.floor(Math.random() * 101)
 	};
 
+	if (persons.some(person => person.name === body.name)) {
+		return res.status(400).json({
+			error: 'name must be unique'
+		})
+	}
+	if (!body.name) {
+		return res.status(400).json({
+			error: 'name missing'
+		})
+	}
+
+	if (!body.number) {
+		return res.status(400).json({
+			error: 'number missing'
+		})
+	}
+	console.log(persons.some(person => person.name), "outside")
 	persons = persons.concat(newPerson)
 	res.json(newPerson)
 });
