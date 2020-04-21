@@ -4,8 +4,8 @@
   "description": "",
   "main": "Notes.js",
   "scripts": {
-    "start": "node Notes.js",
-    "dev" : "nodemon Notes.js",
+    "start": "node index.js",
+    "dev" : "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
