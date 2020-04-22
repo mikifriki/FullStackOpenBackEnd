@@ -1,7 +1,9 @@
-const express = require('express')
+const express = require('express');
+var morgan = require('morgan');
 const app = express();
-app.use(express.json())
 
+app.use(morgan('tiny'))
+app.use(express.json())
 let persons = [
 	{
 		name: "Arto Hellas",
@@ -58,18 +60,18 @@ app.post('/api/persons', (req, res) => {
 	};
 
 	if (persons.some(person => person.name === body.name)) {
-		return res.status(400).json({
+		return res.status(400).send({
 			error: 'name must be unique'
 		})
 	}
 	if (!body.name) {
-		return res.status(400).json({
+		return res.status(400).send({
 			error: 'name missing'
 		})
 	}
 
 	if (!body.number) {
-		return res.status(400).json({
+		return res.status(400).send({
 			error: 'number missing'
 		})
 	}
